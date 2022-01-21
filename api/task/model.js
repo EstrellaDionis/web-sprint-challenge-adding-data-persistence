@@ -14,7 +14,7 @@ function get(id){
     let allTasks = db('tasks')
 
     return allTasks
-        .where('id', id)
+        .where('task_id', id)
         .first()
         .then((task) => {
             return task

@@ -1,21 +1,26 @@
 // build your `/api/tasks` router here
 const express = require('express')
-const taskModel = ('./model.js')
+const taskModel = require('./model.js')
 
 const router = express.Router();
 
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-    const results = await taskModel.get()
+    const results = await taskModel.get(req.params.id)
     res.send(results)
     } catch (err) {
-        res.send(err)
+        res.send(err.message)
     }
 })
 
-router.post('/', (req, res) => {
-    res.send(`<h2>This is the project-router</h2>`);
+router.post('/', async (req, res) => {
+    try {
+    const results = await taskModel.insert(req.body)
+        res.send(results)
+    } catch (err) {
+        res.send(err)
+    }
 })
 
 module.exports = router;

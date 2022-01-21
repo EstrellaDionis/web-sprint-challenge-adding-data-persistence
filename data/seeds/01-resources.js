@@ -1,7 +1,7 @@
 exports.seed = function (knex) {
-    return knex('actions').insert([
+    return knex('resources').insert([
       {
-        project_id: 1,
+        resource_id: 1,
         resource_name: 'foo',
         resource_description: null,
       },
