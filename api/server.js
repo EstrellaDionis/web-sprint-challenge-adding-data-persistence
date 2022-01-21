@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const projectsRouter = require('./project/router');
 
 const server = express();
 
@@ -13,6 +14,8 @@ function logger(req, res, next){
 }
 
 server.use(logger);
+
+server.use('/api/project', projectsRouter)
 
 server.use('/', (req, res) => {
     res.send(`<h2>web-sprint-challenge-adding-data-persistence</h2>`);
