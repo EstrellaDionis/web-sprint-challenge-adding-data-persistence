@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    res.send(`<h2>This is the resource-rtouer</h2>`)
+    res.send(`<h2>This is the resource-router</h2>`)
 })
 
 module.exports = router;
