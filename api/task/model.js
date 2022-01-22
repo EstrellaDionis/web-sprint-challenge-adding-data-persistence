@@ -8,18 +8,15 @@ module.exports = {
     remove,
 }
 
-function get(id){
-    if(!id) throw new Error('Id must be defined')
-    
-    let allTasks = db('tasks')
-
-    return allTasks
-        .where('task_id', id)
-        .first()
-        .then((task) => {
-            return task
-        })
-}
+function get(id) {
+    let query = db("tasks");
+  
+    if (id) {
+      return query.where('task_id', id).first()
+    } else {
+      return query.leftJoin('projects', 'projects.project_id', 'tasks.project_id')
+    }
+  }
 
 function insert(task){
     return db('tasks')
