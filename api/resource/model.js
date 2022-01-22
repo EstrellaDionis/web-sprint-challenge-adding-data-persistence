@@ -8,18 +8,15 @@ module.exports = {
     remove,
 }
 
-function get(id){
-    if(!id) throw new Error('Id must be defined')
-    
-    let allTasks = db('resources')
-
-    return allTasks
-        .where('resource_id', id)
-        .first()
-        .then((task) => {
-            return task
-        })
-}
+function get(id) {
+    let query = db("resources");
+  
+    if (id) {
+      return query.where('resource_id', id).first()
+    } else {
+      return query
+    }
+  }
 
 function insert(task){
     return db('resources')

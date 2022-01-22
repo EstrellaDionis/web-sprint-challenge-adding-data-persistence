@@ -28,10 +28,11 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const results = await projectModel.insert(req.body)
-            res.send(results)
+        const data = await projectModel.insert(req.body)
+        const result = { ...data, project_completed: Boolean(data.project_completed)}
+            res.send(result)
         } catch (err) {
-            res.send(err)
+            res.send(500)
         }
 })
 

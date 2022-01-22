@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
     const result = { ...data, task_completed: Boolean(data.task_completed)}
         res.send(result)
     } catch (err) {
-        res.send(err)
+        res.send(500)
     }
 })
 
